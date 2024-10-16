@@ -6,8 +6,8 @@ type SlackMessage struct {
 
 type Block interface {}
 
-func Message() *SlackMessage {
-	return &SlackMessage{
+func Message() SlackMessage {
+	return SlackMessage{
 		Blocks: []Block{},
 	}
 }
