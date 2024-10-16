@@ -5,10 +5,9 @@ import (
     "encoding/json"
     "net/http"
 	"fmt"
-	"github.com/AdosH1/go-slack-message/models"
 )
 
-func Send(webhookUrl string, message models.SlackMessage) error {
+func Send(webhookUrl string, message SlackMessage) error {
 	payload, err := json.Marshal(message)
     if err != nil {
         return err

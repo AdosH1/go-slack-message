@@ -1,4 +1,4 @@
-package models
+package slack
 
 type SlackMessage struct {
 	Blocks []Block `json:"blocks"`
