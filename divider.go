@@ -1,4 +1,4 @@
-package models
+package slack
 
 type SlackDivider struct {
 	Type string `json:"type"`

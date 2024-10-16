@@ -1,4 +1,4 @@
-package models
+package slack
 
 type SlackText struct {
 	Type string `json:"type"`
