@@ -12,6 +12,8 @@ func Message() SlackMessage {
 	}
 }
 
-func (m *SlackMessage) Add(b Block) {
-	m.Blocks = append(m.Blocks, b)
+func (m *SlackMessage) Add(blocks ...Block) {
+	for _, b := range blocks {
+		m.Blocks = append(m.Blocks, b)
+	}
 }
