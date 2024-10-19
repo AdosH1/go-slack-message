@@ -3,8 +3,8 @@
 A simple slack message builder for Go using webhooks.  
 Uses Slack Blocks instead of the legacy attachments format.
 
-## Usage
-### Building a message:
+# Usage
+## Building a message:
 
 ```go
 import "github.com/AdosH1/go-slack-message"
@@ -24,18 +24,32 @@ if err != nil {
 }
 ```
 ### Output:
-<img src="./images/slack-example-1.png" alt="An australian kookaburra" width="500">
+<img src="./images/basic-example.png" alt="Image showing a basic example of the slack message builder" width="500">
+
+## Using fields (or columns):
+```go
+message.Add(
+		slack.Text("Text will be displayed before fields, but text also can be left empty if defining fields."). 
+			AddField("*Question*", "*Answer*").
+			AddField("How many fields can we have?", "Unfortunately only 5").
+			AddField("Why?", "Because it's a limitation of the Slack API").
+			AddField("How can I add more?", "You can make another text block").
+			AddField("Lorem", "Ipsum"),
+	)
+```
+### Output:
+<img src="./images/fields-example.png" alt="Image showing an example of adding fields to a text block" width="500">
 
 
-### Using a text accessory:
+## Using a text accessory:
 ```go
 message.Add(
     slack.Text("You can add an _accessory image_ to your text blocks to the right -------------> \nThis is an elusive *spotted pardalote*!")
-        .Add(slack.Image("<IMAGE_URL>", "<ALT_TEXT>")),
+        .AddAccessory(slack.Image("<IMAGE_URL>", "<ALT_TEXT>")),
 )
 ```
 ### Output:
-<img src="./images/slack-example-2.png" alt="A spotted pardalote" width="500">
+<img src="./images/accessory-example.png" alt="Image showing an example of adding an accessory image to a text block" width="500">
 
-## License
+# License
 Licensed under the Apache License, Version 2.0: http://www.apache.org/licenses/LICENSE-2.0

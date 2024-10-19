@@ -22,7 +22,20 @@ func Text(text string) *SlackText {
 	}
 }
 
-func (t *SlackText) Add(b Block) *SlackText {
+func (t *SlackText) AddAccessory(b Block) *SlackText {
 	t.Accessory = b
+	return t
+}
+
+func (t *SlackText) AddField(f1 string, f2 string) *SlackText {
+	field1 := TextBody{
+		Type: "mrkdwn",
+		Text: f1,
+	}
+	field2 := TextBody{
+		Type: "mrkdwn",
+		Text: f2,
+	}
+	t.Fields = append(t.Fields, field1, field2)
 	return t
 }
