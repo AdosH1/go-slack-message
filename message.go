@@ -4,7 +4,7 @@ type SlackMessage struct {
 	Blocks []Block `json:"blocks"`
 }
 
-type Block interface {}
+type Block interface{}
 
 func Message() SlackMessage {
 	return SlackMessage{

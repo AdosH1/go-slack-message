@@ -1,14 +1,15 @@
 package slack
 
 type SlackText struct {
-	Type string `json:"type"`
-	Text TextBody `json:"text"`
-	Accessory Block `json:"accessory,omitempty"`
+	Type      string     `json:"type"`
+	Text      TextBody   `json:"text,omitempty"`
+	Fields    []TextBody `json:"fields,omitempty"`
+	Accessory Block      `json:"accessory,omitempty"`
 }
 
 type TextBody struct {
 	Type string `json:"type"`
-	Text string `json:"text"`	
+	Text string `json:"text"`
 }
 
 func Text(text string) *SlackText {
