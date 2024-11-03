@@ -34,20 +34,24 @@ func (t *SlackText) AddAccessory(b Block) *SlackText {
 
 func (t *SlackText) AddField(f1 string, f2 string) *SlackText {
 	// Slack Block API does not allow empty strings for fields
-	// so we chech for empty strings here before adding them
-	if f1 != "" {
-		field1 := TextBody{
-			Type: "mrkdwn",
-			Text: f1,
-		}
-		t.Fields = append(t.Fields, field1)
+	// so we check for empty strings here and convert them to 
+	// a space (so the field is valid)
+	if f1 == "" {
+		f1 = " "
 	}
-	if f2 != "" {
-		field2 := TextBody{
-			Type: "mrkdwn",
-			Text: f2,
-		}
-		t.Fields = append(t.Fields, field2)
+	if f2 == "" {
+		f2 = " "
 	}
+
+	field1 := TextBody{
+		Type: "mrkdwn",
+		Text: f1,
+	}
+	field2 := TextBody{
+		Type: "mrkdwn",
+		Text: f2,
+	}
+
+	t.Fields = append(t.Fields, field1, field2)
 	return t
 }
